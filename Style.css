@@ -129,4 +129,12 @@ body {
     }
 }
 
+.espaco-imagem img {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
 
