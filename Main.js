@@ -1,8 +1,7 @@
-
-
 const botoes = document.querySelectorAll(".botao");
 const textos = document.querySelectorAll(".aba-conteudo");
 
+// Troca de abas
 for (let i = 0; i < botoes.length; i++) {
     botoes[i].onclick = function () {
 
@@ -13,33 +12,44 @@ for (let i = 0; i < botoes.length; i++) {
 
         botoes[i].classList.add("ativo");
         textos[i].classList.add("ativo");
-    }
+    };
 }
 
-
-
+// Metas do painel
 const metas = [
-    {
-        atual: 21.1,
-        meta: 22.0
-    },
-    {
-        atual: 75,
-        meta: 100
-    },
-    {
-        atual: 85,
-        meta: 100
-    },
-    {
-        atual: 2,
-        meta: 17
-    }
+    { atual: 21.1, meta: 22.0 },
+    { atual: 75, meta: 100 },
+    { atual: 85, meta: 100 },
+    { atual: 2, meta: 17 }
 ];
 
-function atualizarContadores() {
+// Contadores
+const contadores = document.querySelectorAll(".contador");
 
-    const contadores = document.querySelectorAll(".contador");
+// Área e tempo (fora da função pra não duplicar interval)
+let area = 0;
+let horas = 0;
+
+// Atualiza área monitorada
+setInterval(() => {
+    area += 0.33;
+    const elArea = document.getElementById("area-monitorada");
+    if (elArea) {
+        elArea.textContent = area.toFixed(2);
+    }
+}, 1000);
+
+// Atualiza tempo de estiagem
+setInterval(() => {
+    horas++;
+    const elTempo = document.getElementById("tempo-estiagem");
+    if (elTempo) {
+        elTempo.textContent = horas;
+    }
+}, 1000);
+
+// Atualiza contadores das metas
+function atualizarContadores() {
 
     for (let i = 0; i < metas.length; i++) {
 
@@ -50,24 +60,12 @@ function atualizarContadores() {
             metas[i].atual += 0.01;
         }
 
-        numeros[0].textContent =
-            metas[i].atual.toFixed(2);
-
-        numeros[1].textContent =
-            metas[i].meta.toFixed(2);
-
-        numeros[2].textContent =
-            (metas[i].meta - metas[i].atual).toFixed(2);
+        numeros[0].textContent = metas[i].atual.toFixed(2);
+        numeros[1].textContent = metas[i].meta.toFixed(2);
+        numeros[2].textContent = (metas[i].meta - metas[i].atual).toFixed(2);
     }
-           let area = 0;
-
-      setInterval(() => {
-       area += 0.33;
-       document.getElementById("area-monitorada").textContent =
-          area.toFixed(2);
-        }, 1000);
 }
 
+// inicializa
 atualizarContadores();
-
-setInterval(atualizarContadores, 1000);
+setInterval(atualizarContadores, 100);
