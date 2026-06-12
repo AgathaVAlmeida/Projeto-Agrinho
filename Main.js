@@ -30,23 +30,17 @@ const contadores = document.querySelectorAll(".contador");
 let area = 0;
 let horas = 0;
 
-// Atualiza área monitorada
 setInterval(() => {
-    area += 0.33;
-    const elArea = document.getElementById("area-monitorada");
-    if (elArea) {
-        elArea.textContent = area.toFixed(2);
-    }
-}, 1000);
+   area += 0.02;
+   document.getElementById("area-monitorada").textContent =
+      area.toFixed(2);
+}, 2000);
 
-// Atualiza tempo de estiagem
 setInterval(() => {
-    horas++;
-    const elTempo = document.getElementById("tempo-estiagem");
-    if (elTempo) {
-        elTempo.textContent = horas;
-    }
-}, 1000);
+   horas += 0.5;
+   document.getElementById("tempo-estiagem").textContent =
+      horas.toFixed(1);
+}, 2000);
 
 // Atualiza contadores das metas
 function atualizarContadores() {
