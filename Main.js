@@ -1,7 +1,7 @@
 const botoes = document.querySelectorAll(".botao");
 const textos = document.querySelectorAll(".aba-conteudo");
 
-// Troca de abas
+// Alternar entre as abas
 for (let i = 0; i < botoes.length; i++) {
     botoes[i].onclick = function () {
 
@@ -15,51 +15,50 @@ for (let i = 0; i < botoes.length; i++) {
     };
 }
 
-// Metas do painel
-const metas = [
-    { atual: 21.1, meta: 22.0 },
-    { atual: 75, meta: 100 },
-    { atual: 85, meta: 100 },
-    { atual: 2, meta: 17 }
+// Datas dos objetivos
+const tempoObjetivo1 = new Date("2026-12-15T23:59:59"); // O ciclo da soja
+const tempoObjetivo2 = new Date("2026-11-08T18:00:00"); // Como a tecnologia ajuda?
+const tempoObjetivo3 = new Date("2026-10-01T23:59:59"); // A relaçaão comm  o meio ambiente
+const tempoObjetivo4 = new Date("2026-08-31T23:59:59"); // Agenda 2030
+
+const tempos = [
+    tempoObjetivo1,
+    tempoObjetivo2,
+    tempoObjetivo3,
+    tempoObjetivo4
 ];
 
-// Contadores
-const contadores = document.querySelectorAll(".contador");
+function calculaTempo(tempoObjetivo) {
+    const agora = new Date();
+    const diferenca = tempoObjetivo - agora;
 
-// Área e tempo (fora da função pra não duplicar interval)
-let area = 0;
-let horas = 0;
+    if (diferenca <= 0) {
+        return [0, 0, 0, 0];
+    }
 
-setInterval(() => {
-   area += 0.02;
-   document.getElementById("area-monitorada").textContent =
-      area.toFixed(2);
-}, 2000);
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
 
-setInterval(() => {
-   horas += 0.5;
-   document.getElementById("tempo-estiagem").textContent =
-      horas.toFixed(1);
-}, 2000);
+    return [dias, horas, minutos, segundos];
+}
 
-// Atualiza contadores das metas
-function atualizarContadores() {
+function atualizaCronometro() {
+    for (let i = 0; i < tempos.length; i++) {
 
-    for (let i = 0; i < metas.length; i++) {
+        const tempo = calculaTempo(tempos[i]);
 
-        const numeros =
-            contadores[i].querySelectorAll(".contador-digito-numero");
-
-        if (metas[i].atual < metas[i].meta) {
-            metas[i].atual += 0.01;
-        }
-
-        numeros[0].textContent = metas[i].atual.toFixed(2);
-        numeros[1].textContent = metas[i].meta.toFixed(2);
-        numeros[2].textContent = (metas[i].meta - metas[i].atual).toFixed(2);
+        document.getElementById("dias" + i).textContent = tempo[0];
+        document.getElementById("horas" + i).textContent = tempo[1];
+        document.getElementById("min" + i).textContent = tempo[2];
+        document.getElementById("seg" + i).textContent = tempo[3];
     }
 }
 
-// inicializa
-atualizarContadores();
-setInterval(atualizarContadores, 100);
+function comecaCronometro() {
+    atualizaCronometro();
+    setInterval(atualizaCronometro, 1000);
+}
+
+comecaCronometro();
