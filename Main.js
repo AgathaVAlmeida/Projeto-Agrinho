@@ -59,6 +59,13 @@ function atualizarContadores() {
         numeros[2].textContent =
             (metas[i].meta - metas[i].atual).toFixed(2);
     }
+           let area = 0;
+
+      setInterval(() => {
+       area += 0.33;
+       document.getElementById("area-monitorada").textContent =
+          area.toFixed(2);
+        }, 1000);
 }
 
 atualizarContadores();
