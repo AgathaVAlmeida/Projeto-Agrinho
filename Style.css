@@ -1,10 +1,10 @@
 :root {
-    --cor-de-fundo: #e7eaca;
-    --verde: #62cc4f;
-    --branco: #FFFFFF;
-    --botao-ativo: #b8ee61;
-    --botao-inativo: rgba(58, 55, 94, 0.5);
-    --texto-fundo: rgba(58, 55, 94, 0.3);
+    --cor-de-fundo: #1B2A1F;
+    --verde: #7CB342;
+    --branco: #F5F5F5;
+    --botao-ativo: #2e7d32;
+    --botao-inativo: rgba(46, 125, 50, 0.5);
+    --texto-fundo: rgba(255, 255, 255, 0.8);
 }
 
 body {
@@ -58,6 +58,11 @@ body {
 
 .botoes {
     display: block;
+    transition: 0.3s;
+}
+.botao:hover{
+    background-color: #388E3C;
+    cursor: pointer;
 }
 
 .botao.ativo {
@@ -69,6 +74,7 @@ body {
     background-color: var(--texto-fundo);
     padding: 40px;
     border-radius: 0 0 40px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .aba-conteudo.ativo {
