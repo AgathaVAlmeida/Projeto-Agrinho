@@ -67,27 +67,30 @@ function atualizarTodos() {
             min: "minSoja",
             seg: "segSoja"
         }
-    );
+        // Meio Ambiente
+atualizarContador(
+    new Date("2027-06-05T00:00:00"),
+    {
+        dias: "diasAmb",
+        horas: "horasAmb",
+        min: "minAmb",
+        seg: "segAmb"
+    }
+);
 
-    // Dia Mundial do Meio Ambiente
-    atualizarContador(
-        new Date("2027-06-05T00:00:00"),
-        {
-            dias: "diasAmb",
-            horas: "horasAmb",
-            min: "minAmb",
-            seg: "segAmb"
-        }
-    );
+// Agenda 2030
+atualizarContador(
+    new Date("2030-12-31T23:59:59"),
+    {
+        dias: "dias2030",
+        horas: "horas2030",
+        min: "min2030",
+        seg: "seg2030"
+    }
+);
+    )
 
-    // Agenda 2030
-    atualizarContador(
-        new Date("2030-12-31T23:59:59"),
-        {
-            dias: "dias2030",
-            horas: "horas2030",
-            min: "min2030",
-            seg: "seg2030"
+    
         }
     );
 }
