@@ -40,7 +40,6 @@ function atualizarContador(dataFinal, ids) {
     document.getElementById(ids.min).textContent = minutos;
     document.getElementById(ids.seg).textContent = segundos;
 }
-
 // Tecnologia
 let areaMonitorada = 350;
 
@@ -55,7 +54,7 @@ function atualizarArea() {
     }
 }
 
-// Atualizar tudo
+// Atualizar todos os contadores
 function atualizarTodos() {
 
     // Ciclo da soja
@@ -67,30 +66,27 @@ function atualizarTodos() {
             min: "minSoja",
             seg: "segSoja"
         }
-        // Meio Ambiente
-atualizarContador(
-    new Date("2027-06-05T00:00:00"),
-    {
-        dias: "diasAmb",
-        horas: "horasAmb",
-        min: "minAmb",
-        seg: "segAmb"
-    }
-);
+    );
 
-// Agenda 2030
-atualizarContador(
-    new Date("2030-12-31T23:59:59"),
-    {
-        dias: "dias2030",
-        horas: "horas2030",
-        min: "min2030",
-        seg: "seg2030"
-    }
-);
-    )
+    // Meio Ambiente
+    atualizarContador(
+        new Date("2027-06-05T00:00:00"),
+        {
+            dias: "diasAmb",
+            horas: "horasAmb",
+            min: "minAmb",
+            seg: "segAmb"
+        }
+    );
 
-    
+    // Agenda 2030
+    atualizarContador(
+        new Date("2030-12-31T23:59:59"),
+        {
+            dias: "dias2030",
+            horas: "horas2030",
+            min: "min2030",
+            seg: "seg2030"
         }
     );
 }
